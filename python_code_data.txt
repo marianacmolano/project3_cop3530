@@ -1,0 +1,24 @@
+
+import csv
+import numpy as np
+import pandas as pd
+import random
+
+header = ['ApplicantID' , 'Degrees(#)', 'GPA(1.5-4)', 'Experience(#)', 'Cover Letter(T/F)', 'Time(hrs)', 'Interview Score(1-10)', 'Diversity(T/F)']
+data = pd.DataFrame(columns=header)
+
+data['ApplicantID'] = np.random.randint(0, 100000, 100000)
+data['Degrees(#)'] = np.random.randint(0, 5, 100000)
+data['GPA(1.5-4)'] = np.random.uniform(1.5, 4.00000001, size=100000)
+data['Experience(#)'] = np.random.randint(0, 10, 100000)
+data['Cover Letter(T/F)'] = np.random.randint(0, 2, 100000)
+data['Time(hrs)'] = np.random.randint(1, 730, 100000)
+data['Interview Score(1-10)'] = np.random.randint(1, 11, 100000)
+data['Diversity(T/F)'] = np.random.randint(0, 2, 100000)
+
+data['ApplicantID'] = data['ApplicantID'].astype(str)
+data['ApplicantID'] = data['ApplicantID'].str.zfill(8)
+
+filename = 'Applicant_Data.csv'
+
+data.to_csv(filename, index=False)
